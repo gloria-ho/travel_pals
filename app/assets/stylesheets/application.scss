@@ -32,9 +32,14 @@ body{
   text-align: center;
 }
 
+.clear {
+  clear: both;
+}
+
 .max-width {
   width: 100%;
 }
+
 
 /*
  * nav
@@ -50,7 +55,24 @@ body{
 
 .nav li {
   list-style-type: none;
-  text-decoration: none;
   display: inline-block;
   margin: 10px;
+}
+
+.nav li a:hover {
+  text-decoration: none;
+}
+
+
+/*
+ * home page
+ */
+.friends-img {
+  max-width: 100%;
+}
+
+.about-us {
+  position: absolute;
+  // width: 400px;
+  height: 400px;
 }
