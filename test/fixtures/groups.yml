@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nickname: MyString
+  creator: 1
+  admin: 1
+
+two:
+  nickname: MyString
+  creator: 1
+  admin: 1

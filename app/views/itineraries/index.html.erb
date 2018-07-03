@@ -1,0 +1,30 @@
+<div class="row max-width auto-margin">
+  <div class="col-12">
+    
+    <h3>Itineraries</h3>
+
+    <p>This is where you can create, display, edit, and remove Itineraries</p>
+
+    <div class="main-img-div auto-margin">
+      <%= image_tag image_path("map-single.jpg"), alt: "trip planning image", class: "hero-img" %>
+    </div>
+
+    <div class="content">
+      <br />
+      <%= link_to "Add New Itinerary", new_itinerary_path, "class": "btn btn-outline-secondary btn-lg btn-block" %>
+
+      <br>
+
+      <% if @itineraries!=[] %>
+
+        This shows if there are trips
+
+      <% else %>
+
+        There are no trips
+
+      <% end %>
+    </div>
+
+  </div>
+</div>

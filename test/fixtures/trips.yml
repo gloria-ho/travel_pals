@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nickname: MyString
+  creator: 1
+  cost: 1
+  deadline: 2018-07-02
+  start_date: 2018-07-02
+  end_date: 2018-07-02
+  group_id: 1
+
+two:
+  nickname: MyString
+  creator: 1
+  cost: 1
+  deadline: 2018-07-02
+  start_date: 2018-07-02
+  end_date: 2018-07-02
+  group_id: 1

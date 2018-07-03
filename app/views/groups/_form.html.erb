@@ -1,0 +1,17 @@
+<%= form_for @group do |f| %>
+  <div class="form-group">
+    <%= f.label :nickname %>
+    <%= f.text_field :nickname, class: "form-control" %>
+  
+  </div>
+
+  <div>
+    Admin: <%= current_user.first_name+" "+current_user.last_name+" (me)" %>
+  </div>
+
+  <br />
+  
+  <div class="form-group">
+    <%= f.submit "Create Itinerary", class: "btn btn-outline-success btn-block" %>
+  </div>
+<% end %>

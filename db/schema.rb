@@ -10,10 +10,64 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_29_205348) do
+ActiveRecord::Schema.define(version: 2018_07_02_201356) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cities", force: :cascade do |t|
+    t.string "city"
+    t.string "region"
+    t.string "country"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "trip_id"
+    t.integer "goal"
+    t.integer "current"
+    t.date "deadline"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "group_members", force: :cascade do |t|
+    t.integer "group_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "groups", force: :cascade do |t|
+    t.string "nickname"
+    t.integer "creator_id"
+    t.integer "admin_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "itineraries", force: :cascade do |t|
+    t.integer "trip_id"
+    t.integer "city_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.date "start_date"
+    t.date "end_date"
+  end
+
+  create_table "trips", force: :cascade do |t|
+    t.string "nickname"
+    t.integer "creator_id"
+    t.integer "cost"
+    t.date "deadline"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "group_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

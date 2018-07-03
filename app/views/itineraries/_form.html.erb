@@ -1,0 +1,17 @@
+<%= form_for @itinerary do |f| %>
+  <div class="form-group">
+    <%= f.label :trip_id %>
+    <%= f.text_field :trip_id, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :city_id %> 
+    <%= f.text_field :city_id, class: "form-control" %>
+  </div>
+  
+  <br />
+  
+  <div class="form-group">
+    <%= f.submit "Create Itinerary", class: "btn btn-outline-success btn-block" %>
+  </div>
+<% end %>

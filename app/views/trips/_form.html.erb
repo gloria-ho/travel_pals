@@ -1,0 +1,38 @@
+<%= form_for @trip do |f| %>
+  <div class="form-group">
+    <%= f.label :nickname %>
+    <%= f.text_field :nickname, class: "form-control" %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :cost %>
+    <%= f.number_field :cost, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :deadline %>
+    <%= f.date_field :deadline, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :start_date %>
+    <%= f.date_field :start_date, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :end_date %>
+    <%= f.date_field :end_date, class: "form-control" %>
+  </div>
+
+<!--   <div class="form-group">
+    <%= f.label :group_id %>
+    <%= f.number_field :group_id, class: "form-control" %>
+  </div> -->
+
+
+  <br />
+  
+  <div class="form-group">
+    <%= f.submit "Create Itinerary", class: "btn btn-outline-success btn-block" %>
+  </div>
+<% end %>
