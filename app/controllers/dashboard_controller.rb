@@ -2,9 +2,11 @@ class DashboardController < ApplicationController
   def index
     @myGroups = GroupMember.where(user_id: current_user.id)
     @myTrips = []
-    @myGroups.each do |t|
-      @myTrips.push(Trip.find_by(group_id: t.id))
+    @myGroups.each do |g|
+      trip = Trip.find_by(group_id: g.group_id)
+      if trip.present?
+        @myTrips.push(trip)
+      end
     end
-    # @MyTrips = Trip.where(group_id: @myGroups.id)
   end
 end
