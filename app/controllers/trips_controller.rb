@@ -12,6 +12,12 @@ class TripsController < ApplicationController
 
   def new
     @trip = Trip.new
+    myGroup = GroupMember.where(user_id: current_user.id)
+    @groups = []
+    myGroup.each do |g|
+      # @groups.push(Group.where(id: g.group_id))
+      @groups.push(g.group.nickname)
+    end
   end
 
   def create
@@ -38,6 +44,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:nickname, :creator_id, :cost, :deadline, :start_date, :end_date)
+    params.require(:trip).permit(:nickname, :cost, :deadline, :start_date, :end_date, :group_id)
   end
 end

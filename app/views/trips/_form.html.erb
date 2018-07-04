@@ -24,10 +24,10 @@
     <%= f.date_field :end_date, class: "form-control" %>
   </div>
 
-<!--   <div class="form-group">
+  <div class="form-group">
     <%= f.label :group_id %>
-    <%= f.number_field :group_id, class: "form-control" %>
-  </div> -->
+    <%= f.select :group_id, options_for_select(@groups), :include_blank => true, class: "form-control" %>
+  </div>
 
 
   <br />

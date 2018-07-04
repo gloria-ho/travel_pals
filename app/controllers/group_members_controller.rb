@@ -8,21 +8,25 @@ class GroupMembersController < ApplicationController
     @users = User.all.map{ |u| ["#{u.first_name} #{u.last_name}", u.id] }
   end
 
-  def show
-    @group = Group.find(params[:group_id])
-    # @group_member = GroupMember.find(params[:id])
-    redirect_to @group
-  end
-
   def create
     @group = Group.find(params[:group_id])
     existing_member = GroupMember.find_by(group_id: :group_id, user_id: :user_id)
+    p params[:user_id]
+    
     if existing_member.present?
-      flash[:error] = "This person is already a member."
+      flash[:error] = "This person is already a member"
       return redirect_back fallback_location: @group
     end
+
     GroupMember.create(group_member_params.merge(group_id: @group.id))
+
     flash[:success] = "Group member has been successfully added"
+    redirect_to @group
+  end
+
+  def show
+    @group = Group.find(params[:group_id])
+    # @group_member = GroupMember.find(params[:id])
     redirect_to @group
   end
 

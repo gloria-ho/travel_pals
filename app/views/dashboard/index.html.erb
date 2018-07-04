@@ -8,7 +8,7 @@
       </div>
     </div>
 
-      <div class="row mt-3 mb-3">
+    <div class="row mt-3 mb-3">
       <div class="col-12">
         <%= link_to "Create New Travel Group", new_group_path, class: "btn btn-outline-info btn-block" %>
       </div>
@@ -46,7 +46,15 @@
 
     <div class="row">
       <div class="col-12">
-        This is where your trips go
+        <ul>
+          <% if @myTrips.nil? %>
+            <h4>You have no trips yet - create a trip or ask a friend for an invite!</h4>
+          <% else %>
+            <% @myTrips.each do |trip| %>
+            <li class="link"><%= link_to trip.nickname, trip %></li>
+            <% end %>
+          <% end %>
+        </ul>
       </div>
     </div>
 

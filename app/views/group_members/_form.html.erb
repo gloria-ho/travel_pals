@@ -2,7 +2,7 @@
 
   <div class="form-group">
     <%= f.label :user_id %> 
-    <%= f.select :user_id, options_for_select(@users), class: "form-control" %>
+    <%= f.select :user_id, options_for_select(@users), :include_blank => true, class: "form-control" %>
   </div>
 
   <br />
