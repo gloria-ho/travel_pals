@@ -1,0 +1,13 @@
+<%= form_for [@group, @group_member] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :user_id %> 
+    <%= f.select :user_id, options_for_select(@users), class: "form-control" %>
+  </div>
+
+  <br />
+
+  <div class="form-group">
+    <%= f.submit "Add Member", class: "btn btn-outline-success btn-block" %>
+  </div>
+<% end %>

@@ -1,0 +1,25 @@
+<div class="row max-width">
+  <div class="col-12 center">
+    <h3 class="bold">Travel Group: <span class="italic"><%= @current_group.nickname %></span></h3>
+    <small><%= link_to "Edit Group Name", edit_group_path %></small>
+  </div>
+</div>
+
+<div class="row max-width mt-2">
+  <div class="col-6 auto-margin">
+    <%= link_to "Add New Member", new_group_group_member_path(@current_group), class: "btn btn-outline-secondary btn-block" %>
+  </div>
+</div>
+
+<div class="row max-width mt-5">
+  <div class="col-12 center">
+    <h4>Group Members</h4>
+    <ul class="no-padding">
+      <% @members.each do |member| %>
+        <li class="group-member member-div">
+          <%= member.first_name %> <%= member.last_name %> <%= link_to "Remove", group_member_path, class: 'delete-member' %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

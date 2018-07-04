@@ -45,7 +45,17 @@ body{
   max-width: 100%;
 }
 
+.bold {
+  font-weight: bold;
+}
 
+.italic {
+  font-style: italic;
+}
+
+.no-padding {
+  padding: 0;
+}
 
 /*
  * nav
@@ -60,13 +70,16 @@ body{
 }
 
 .nav li {
-  list-style-type: none;
   display: inline-block;
-  margin: 10px;
 }
 
-.nav li a:hover {
+.nav li a:hover, .link a:hover {
   text-decoration: none;
+}
+
+.nav li , .link {
+  list-style-type: none;
+  margin: 10px;
 }
 
 
@@ -93,3 +106,11 @@ body{
 /*
  * footer
  */
+
+
+/*
+ * groups
+ */
+ .group-member {
+  list-style-type: none;
+ }

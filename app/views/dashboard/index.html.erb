@@ -10,13 +10,21 @@
 
       <div class="row mt-3 mb-3">
       <div class="col-12">
-        <%= link_to "Create New Travel Group", new_group_path, class: "btn btn-outline-success btn-block" %>
+        <%= link_to "Create New Travel Group", new_group_path, class: "btn btn-outline-info btn-block" %>
       </div>
     </div>
 
     <div class="row">
       <div class="col-12">
-        This is where you will see your groups
+        <ul>
+          <% if @myGroups.nil? %>
+            <h4>You have no groups yet - create a group or ask a friend for an invite!</h4>
+          <% else %>
+            <% @myGroups.each do |group| %>
+            <li class="link"><%= link_to group.group.nickname, group.group %></li>
+            <% end %>
+          <% end %>
+        </ul>
       </div>
     </div>
 
@@ -32,7 +40,7 @@
 
     <div class="row mt-3 mb-3">
       <div class="col-12">
-        <%= link_to "Create New Trip", new_trip_path, class: "btn btn-outline-success btn-block" %>
+        <%= link_to "Create New Trip", new_trip_path, class: "btn btn-outline-info btn-block" %>
       </div>
     </div>
 

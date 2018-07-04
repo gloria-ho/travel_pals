@@ -7,7 +7,12 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.find(params[:id])
+    @current_group = Group.find(params[:id])
+    current_members = GroupMember.where(group_id: @current_group.id)
+    @members = []
+    current_members.each do |member|
+      @members.push(User.find(member.user_id))
+    end
   end
 
   def new
@@ -16,7 +21,7 @@ class GroupsController < ApplicationController
 
   def create
     group = Group.create(group_params.merge(creator_id: current_user.id, admin_id: current_user.id))
-    
+    GroupMember.create(group_id: group.id, user_id: current_user.id)
     flash[:success] = "Group has been successfully created"
     redirect_to dashboard_path
   end
@@ -33,7 +38,7 @@ class GroupsController < ApplicationController
 
   def destroy
     Group.destroy(params[:id])
-    # render json: {status: "success", message: "Group was successfully deleted"}
+    render json: {status: "success", message: "Group was successfully deleted"}
   end
 
   private
