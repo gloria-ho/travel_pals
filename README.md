@@ -23,8 +23,7 @@ A simple to use web app that allows the users to plan and manage travel itinerar
 * [Ruby on Rails v.5.2.0](https://rubyonrails.org/)
 * [ActiveRecord](http://guides.rubyonrails.org/active_record_basics.html)
 * [PostgreSQL](https://www.postgresql.org/)
-
 * User Authentication via [Devise gem](https://github.com/plataformatec/devise)
-<!-- * RESTful jQuery based AJAX inplace editing via [Best In Place gem](https://github.com/bernat/best_in_place) -->
 * [Deploying to Heroku](https://devcenter.heroku.com/categories/deployment)
 * [Bootstrap](https://getbootstrap.com/)
+<!-- * RESTful jQuery based AJAX inplace editing via [Best In Place gem](https://github.com/bernat/best_in_place) -->
