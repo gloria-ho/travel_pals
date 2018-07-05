@@ -9,12 +9,8 @@ class TripsController < ApplicationController
   def new
     @trip = Trip.new
     myGroup = GroupMember.where(user_id: current_user.id)
-    @groups = []
-    myGroup.each do |g|
-      @groups.push(g.group.nickname)
-      #
-      # this is also not correct based on below
-      #
+    @groups = myGroup.map do |g|
+      [g.group.nickname,g.group.id]
     end
   end
 
@@ -27,13 +23,12 @@ class TripsController < ApplicationController
   def show
     @trip = Trip.find(params[:id])
     @members = []
-    if @trip.group.id.exists()?
+    if @trip.group_id
       current_group = Group.find(@trip.group.id)
       current_members = GroupMember.where(group_id: current_group.id)
       current_members.each do |member|
         @members.push(User.find(member.user_id))
       end
-
     end
 
   end
@@ -41,13 +36,8 @@ class TripsController < ApplicationController
   def edit
     @trip = Trip.find(params[:id])
     myGroup = GroupMember.where(user_id: current_user.id)
-    @groups = []
-    myGroup.each do |g|
-      # @groups.push(g.group.map{ |gr| ["#{gr.nickname}", gr.id] })
-      @groups.push(g.group.nickname)
-      #
-      # group id not pushing through! 
-      #
+    @groups = myGroup.map do |g|
+      [g.group.nickname,g.group.id]
     end
   end
 

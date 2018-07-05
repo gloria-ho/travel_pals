@@ -15,7 +15,7 @@ class GroupMembersController < ApplicationController
     #
     # TODO
     #
-    # FIX: user_id not working here, id statement is not running yet
+    # FIX: user_id not working here, if statement is not running yet
     p params[:user_id]
     if existing_member.present?
       flash[:error] = "This person is already a member"
@@ -36,7 +36,7 @@ class GroupMembersController < ApplicationController
 
   def destroy
     member = GroupMember.find_by(group_id: :group_id, user_id: :user_id)
-    nember.destroy(params[:member_id])
+    member.destroy(params[:member_id])
     render json: {status: "success", message: "Group member was successfully deleted"}
   end
 

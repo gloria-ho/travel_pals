@@ -10,10 +10,13 @@ class DashboardController < ApplicationController
       end
     end
 
-    @createdTrips = []
     trips = Trip.where(creator_id: current_user.id)
-    trips.each do |t|
-      @createdTrips.push(t)
+    if trips.present?
+      trips.each do |t|
+        unless @myTrips.include?(t)
+          @myTrips.push(t)
+        end
+      end
     end
 
   end

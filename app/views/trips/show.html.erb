@@ -47,22 +47,34 @@
     <span class="bold">Travel Group:</span>
   </div>
   <div class="col-6 align-left">
-  <%= @trip.group.nickname %>
+  <% if @trip.group %>
+    <%= @trip.group.nickname %>
+  <% else %>
+    You haven't assigned a group yet
+  <% end %>
   </div>
 </div>
 
 <div class="row max-width mt-5">
   <div class="col-12 center">
-    <h4><%= @trip.group.nickname %> Members</h4>
-    <small><%= link_to "Edit Group", @trip.group, class: "link" %></small>
+    <% if @trip.group %>
+      <h4><%= @trip.group.nickname %> Members</h4>
+      <small><%= link_to "Edit Group", @trip.group, class: "link" %></small>
+    <% else %>
+      <h4>Please assign a group.</h4>
+      <small><%= link_to "Edit Trip Details", edit_trip_path, class: "link" %></small>
+    <% end %>
     <ul class="no-padding">
 
-      <% unless @members.blank? %>        
+      <% if @members %>  
         <% @members.each do |member| %>
           <li class="group-member member-div">
             <%= member.first_name %> <%= member.last_name %>
           </li>
         <% end %>
+      <% else %>
+      Test
+
       <% end %>
 
     </ul>

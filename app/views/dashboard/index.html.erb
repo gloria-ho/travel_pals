@@ -51,9 +51,6 @@
             <h4>You have no trips yet - create a trip or ask a friend for an invite!</h4>
           <% else %>
             <% @myTrips.each do |t| %>
-            <li class="link"><%= link_to t.nickname, t.group %></li>
-            <% end %>
-            <% @createdTrips.each do |t| %>
             <li class="link"><%= link_to t.nickname, t %></li>
             <% end %>
           <% end %>
