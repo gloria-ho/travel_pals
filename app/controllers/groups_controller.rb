@@ -37,7 +37,8 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    Group.destroy(params[:id])
+    group = Group.find(params[:id])
+    group.destroy(params[:id])
     render json: {status: "success", message: "Group was successfully deleted"}
   end
 

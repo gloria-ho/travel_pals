@@ -11,12 +11,17 @@ class GroupMembersController < ApplicationController
   def create
     @group = Group.find(params[:group_id])
     existing_member = GroupMember.find_by(group_id: :group_id, user_id: :user_id)
-    p params[:user_id]
     
+    #
+    # TODO
+    #
+    # FIX: user_id not working here, id statement is not running yet
+    p params[:user_id]
     if existing_member.present?
       flash[:error] = "This person is already a member"
       return redirect_back fallback_location: @group
     end
+    #
 
     GroupMember.create(group_member_params.merge(group_id: @group.id))
 
@@ -26,12 +31,12 @@ class GroupMembersController < ApplicationController
 
   def show
     @group = Group.find(params[:group_id])
-    # @group_member = GroupMember.find(params[:id])
     redirect_to @group
   end
 
   def destroy
-    GroupMember.destroy(params[:member_id])
+    member = GroupMember.find_by(group_id: :group_id, user_id: :user_id)
+    nember.destroy(params[:member_id])
     render json: {status: "success", message: "Group member was successfully deleted"}
   end
 

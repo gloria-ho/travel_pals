@@ -1,0 +1,70 @@
+<div class="row max-width">
+  <div class="col-12 center">
+    <h3 class="bold">Trip Itinerary: <span class="italic"><%= @trip.nickname %></span></h3>
+    <small><%= link_to "Edit Trip Details", edit_trip_path %></small>
+  </div>
+</div>
+
+
+<div class="row max-width mt-3">
+  <div class="col-6 align-right">
+    <span class="bold">Cost:</span>
+  </div>
+  <div class="col-6 align-left">
+  $<%= @trip.cost %>
+  </div>
+</div>
+
+<div class="row max-width mt-2">
+  <div class="col-6 align-right">
+    <span class="bold">Deadline:</span>
+  </div>
+  <div class="col-6 align-left">
+  <%= @trip.deadline.strftime("%m/%d/%Y") %>
+  </div>
+</div>
+
+<div class="row max-width mt-2">
+  <div class="col-6 align-right">
+    <span class="bold">Start Date:</span>
+  </div>
+  <div class="col-6 align-left">
+  <%= @trip.start_date.strftime("%m/%d/%Y") %>
+  </div>
+</div>
+
+<div class="row max-width mt-2">
+  <div class="col-6 align-right">
+    <span class="bold">End Date:</span>
+  </div>
+  <div class="col-6 align-left">
+  <%= @trip.end_date.strftime("%m/%d/%Y") %>
+  </div>
+</div>
+
+<div class="row max-width mt-2">
+  <div class="col-6 align-right">
+    <span class="bold">Travel Group:</span>
+  </div>
+  <div class="col-6 align-left">
+  <%= @trip.group.nickname %>
+  </div>
+</div>
+
+<div class="row max-width mt-5">
+  <div class="col-12 center">
+    <h4><%= @trip.group.nickname %> Members</h4>
+    <small><%= link_to "Edit Group", @trip.group, class: "link" %></small>
+    <ul class="no-padding">
+
+      <% unless @members.blank? %>        
+        <% @members.each do |member| %>
+          <li class="group-member member-div">
+            <%= member.first_name %> <%= member.last_name %>
+          </li>
+        <% end %>
+      <% end %>
+
+    </ul>
+  </div>
+</div>

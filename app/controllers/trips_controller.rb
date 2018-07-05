@@ -6,17 +6,15 @@ class TripsController < ApplicationController
     @trips = Trip.all
   end
 
-  def show
-    @trip = Trip.find(params[:id])
-  end
-
   def new
     @trip = Trip.new
     myGroup = GroupMember.where(user_id: current_user.id)
     @groups = []
     myGroup.each do |g|
-      # @groups.push(Group.where(id: g.group_id))
       @groups.push(g.group.nickname)
+      #
+      # this is also not correct based on below
+      #
     end
   end
 
@@ -26,19 +24,42 @@ class TripsController < ApplicationController
     redirect_to dashboard_path
   end
 
+  def show
+    @trip = Trip.find(params[:id])
+    @members = []
+    if @trip.group.id.exists()?
+      current_group = Group.find(@trip.group.id)
+      current_members = GroupMember.where(group_id: current_group.id)
+      current_members.each do |member|
+        @members.push(User.find(member.user_id))
+      end
+
+    end
+
+  end
+
   def edit
     @trip = Trip.find(params[:id])
+    myGroup = GroupMember.where(user_id: current_user.id)
+    @groups = []
+    myGroup.each do |g|
+      # @groups.push(g.group.map{ |gr| ["#{gr.nickname}", gr.id] })
+      @groups.push(g.group.nickname)
+      #
+      # group id not pushing through! 
+      #
+    end
   end
 
   def update
-    @trip = Trip.find(params[:id])
+    trip = Trip.find(params[:id])
     trip.update(trip_params)
     redirect_to dashboard_path
   end
 
   def destroy
     Trip.destroy(params[:id])
-    # render json: {status: "success", message: "Itinerary was successfully deleted"}
+    render json: {status: "success", message: "Trip was successfully deleted"}
   end
 
   private
