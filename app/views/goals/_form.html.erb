@@ -1,0 +1,18 @@
+<%= form_for [@trip, @goal] do |f| %>
+
+  <div class="form-group">
+    <%= f.label :goal %>
+    <%= f.number_field :goal, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_amount %>
+    <%= f.number_field :current, class: "form-control" %>
+  </div>
+
+  <br />
+
+  <div class="form-group">
+    <%= f.submit "Save Goal", class: "btn btn-outline-success btn-block" %>
+  </div>
+<% end %>

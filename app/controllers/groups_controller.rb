@@ -10,8 +10,8 @@ class GroupsController < ApplicationController
     @current_group = Group.find(params[:id])
     current_members = GroupMember.where(group_id: @current_group.id)
     @members = []
-    current_members.each do |member|
-      @members.push(User.find(member.user_id))
+    current_members.each do |m|
+      @members.push([User.find(m.user_id), m.id])
     end
   end
 
@@ -37,8 +37,7 @@ class GroupsController < ApplicationController
   end
 
   def destroy
-    group = Group.find(params[:id])
-    group.destroy(params[:id])
+    Group.destroy(params[:id])
     render json: {status: "success", message: "Group was successfully deleted"}
   end
 

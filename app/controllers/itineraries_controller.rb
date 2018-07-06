@@ -31,8 +31,7 @@ class ItinerariesController < ApplicationController
   end
 
   def destroy
-    itinerary = Itinerary.find(params[:id])
-    itinerary.destroy(params[:id])
+    Itinerary.destroy(params[:id])
     # render json: {status: "success", message: "Itinerary was successfully deleted"}
   end
 

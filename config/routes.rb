@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   resources :trips do
-    resources :groups, only: [:index, :new, :create]
+    resources :groups, only: [:new, :create]
     resources :goals, only: [:new, :create]
   end
   resources :groups do

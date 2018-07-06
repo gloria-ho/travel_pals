@@ -69,7 +69,10 @@
       <% if @members %>  
         <% @members.each do |member| %>
           <li class="group-member member-div">
-            <%= member.first_name %> <%= member.last_name %>
+            <%= member.first_name %> <%= member.last_name %> <%= link_to "Add Goal", new_trip_goal_path(@trip), class: "link"  %>
+
+            <!-- DISPLAY GOAL HERE -->
+
           </li>
         <% end %>
       <% else %>

@@ -35,8 +35,7 @@ class GroupMembersController < ApplicationController
   end
 
   def destroy
-    member = GroupMember.find_by(group_id: :group_id, user_id: :user_id)
-    member.destroy(params[:member_id])
+    GroupMember.destroy(params[:id])
     render json: {status: "success", message: "Group member was successfully deleted"}
   end
 
