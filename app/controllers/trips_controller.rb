@@ -30,7 +30,6 @@ class TripsController < ApplicationController
         @members.push(User.find(member.user_id))
       end
     end
-
   end
 
   def edit

@@ -1,4 +1,9 @@
 class GoalsController < ApplicationController
+  respond_to :html, :json
+  def new_goals
+    # render json: Goal.group_by_day(:created_at).count
+    # render json: Goal.where(user_id: :user_id, trip_id: :trip_id)
+  end
 
   def new
     @trip = Trip.find(params[:trip_id])
@@ -15,9 +20,15 @@ class GoalsController < ApplicationController
   end
 
   def edit
+    @trip = Trip.find(params[:trip_id])
+    @goal = Goal.find(params[:id])
   end
 
   def update
+    @trip = Trip.find(params[:trip_id])
+    @goal = Goal.find(params[:id])
+    @goal.update(goal_params)
+    repspond_with @current_trip
   end
 
   def destroy

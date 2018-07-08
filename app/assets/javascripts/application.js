@@ -12,7 +12,28 @@
 //
 //= require rails-ujs
 //= require jquery/dist/jquery
-//= require axios/dist/axios
 //= require toastr/build/toastr.min
+//= require jquery.purr
+//= require best_in_place
+//= require Chart.bundle
+//= require chartkick
+//= require highcharts
+//= require axios/dist/axios
 //= require bootstrap/dist/js/bootstrap
 //= require_tree .
+
+// import Chartkick from "chartkick";
+// window.Chartkick = Chartkick;
+
+// for Chart.js
+// import Chart from "chart.js";
+// Chartkick.addAdapter(Chart);
+
+// for Highcharts
+// import Highcharts from "highcharts";
+// Chartkick.addAdapter(Highcharts);
+
+$(document).ready(function() {
+  /* Activating Best In Place */
+  jQuery(".best_in_place").best_in_place();
+});

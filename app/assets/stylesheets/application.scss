@@ -25,6 +25,10 @@ body{
   font-size: 1rem;
 }
 
+.row {
+  margin: 0;
+}
+
 .auto-margin {
   margin: 0 auto;
 }
@@ -63,6 +67,30 @@ body{
 
 .no-padding {
   padding: 0;
+}
+
+.red, .green {
+  color: #fff;
+}
+
+.red {
+  background-color: #ba0000;
+}
+
+.orange {
+  background-color: #e07b00;
+}
+
+.yellow {
+  background-color: #e8c900;
+}
+
+.green {
+  background-color: #01c43c;
+}
+
+.blink {
+  animation: blinker 1s linear infinite;
 }
 
 /*
@@ -122,3 +150,12 @@ body{
  .group-member {
   list-style-type: none;
  }
+
+ /*
+  * animation
+  */
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
