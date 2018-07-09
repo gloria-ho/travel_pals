@@ -21,8 +21,8 @@ class GoalsController < ApplicationController
 
   def edit
     @trip_goal = Goal.find(params[:id])
-
     @form_resource = @trip_goal
+    @trip = Trip.find(@trip_goal.trip_id)
   end
 
   def update

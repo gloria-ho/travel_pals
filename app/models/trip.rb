@@ -3,6 +3,6 @@ class Trip < ApplicationRecord
  
   belongs_to :group, optional: true
   belongs_to :creator, class_name: 'User'
-  has_one :itinerary
+  has_many :itineraries
   has_many :goals
 end

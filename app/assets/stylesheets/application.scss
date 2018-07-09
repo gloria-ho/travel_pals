@@ -90,8 +90,12 @@ body{
   padding: 0;
 }
 
-.red, .green {
+.red, .orange, .green {
   color: #fff;
+}
+.red, .orange, .yellow, .green {
+  border-radius: 5px;
+  padding: 8px;
 }
 .red {
   background-color: #ba0000;
