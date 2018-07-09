@@ -26,8 +26,8 @@ ActiveRecord::Schema.define(version: 2018_07_02_201356) do
   create_table "goals", force: :cascade do |t|
     t.integer "user_id"
     t.integer "trip_id"
-    t.integer "goal"
-    t.integer "current"
+    t.integer "total_goal"
+    t.integer "current_amount"
     t.date "deadline"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -60,10 +60,10 @@ ActiveRecord::Schema.define(version: 2018_07_02_201356) do
   create_table "trips", force: :cascade do |t|
     t.string "nickname"
     t.integer "creator_id"
-    t.integer "cost"
-    t.date "deadline"
-    t.date "start_date"
-    t.date "end_date"
+    t.integer "total_cost"
+    t.date "funds_deadline"
+    t.date "trip_start_date"
+    t.date "trip_end_date"
     t.integer "group_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

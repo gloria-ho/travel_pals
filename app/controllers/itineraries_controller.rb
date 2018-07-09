@@ -11,13 +11,16 @@ class ItinerariesController < ApplicationController
   end
 
   def new
-    @itinerary = Itinerary.new
+    @trip = Trip.find(params[:trip_id])
+    @trip_itinerary = Itinerary.new
+    @trip_itinerary_city = City.new
   end
 
   def create
-    itinerary = Itinerary.create(itinerary_params)
+    City.find(params[:city_name])
+    itinerary = Itinerary.create(itinerary_params.merge(trip_id: params[:trip_id], city_id: city.id))
     flash[:success] = "Itinerary has been successfully created"
-    redirect_to itineraries_path
+    redirect_to trip_path(params[:trip_id])
   end
 
   def edit
@@ -38,7 +41,7 @@ class ItinerariesController < ApplicationController
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:trip_id, :city_id, :start_date, :end_date)
+    params.require(:itinerary).permit(:start_date, :end_date)
   end
 
 end

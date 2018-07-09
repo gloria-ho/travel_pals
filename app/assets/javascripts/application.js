@@ -34,6 +34,12 @@
 // Chartkick.addAdapter(Highcharts);
 
 $(document).ready(function() {
-  /* Activating Best In Place */
-  jQuery(".best_in_place").best_in_place();
+  // activating Best In Place
+  jQuery('.best_in_place').best_in_place();
+
+  // faux messaging
+  $('.message').click(function() {
+    alert('Our messaging service is down right now, please try again later.');
+  });
+
 });

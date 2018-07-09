@@ -15,6 +15,7 @@ class GroupMembersController < ApplicationController
     #
     # TODO
     #
+    # Message not working, duplicate won't create
     # FIX: user_id not working here, if statement is not running yet
     p params[:user_id]
     if existing_member.present?
@@ -24,7 +25,6 @@ class GroupMembersController < ApplicationController
     #
 
     GroupMember.create(group_member_params.merge(group_id: @group.id))
-
     flash[:success] = "Group member has been successfully added"
     redirect_to @group
   end

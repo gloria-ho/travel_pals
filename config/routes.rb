@@ -13,16 +13,18 @@ Rails.application.routes.draw do
   resources :trips do
     resources :groups, only: [:new, :create]
     resources :goals, only: [:new, :create, :edit]
+    resources :itineraries do
+      resources :cities, only: [:new, :create]
+    end
   end
+  
   resources :groups do
     resources :group_members, only: [:new, :create]
   end
+
   resources :group_members
-
-  resources :itineraries do
-    resources :cities, only: [:new, :create]
-  end
-
+  resources :goals
+  
   resources :charts, only: [] do
     collection  do
       get 'new_users', to: 'charts#new_users'

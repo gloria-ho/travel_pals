@@ -1,4 +1,10 @@
-<div class="row max-width">
+<div class="row max-width bg-img">
+  <div class="col-12 center no-padding">
+    <%= image_tag image_path("friends-truck.jpg"), alt: "friends image", class: "hero-img opacity-2" %>
+  </div>
+</div>
+
+<div class="row max-width mt-2">
   <div class="col-12 center">
     <h3 class="bold">Travel Group: <span class="italic"><%= @current_group.nickname %></span></h3>
     <small><%= link_to "Edit Group Name", edit_group_path %></small>
@@ -7,7 +13,7 @@
 
 <div class="row max-width mt-2">
   <div class="col-6 auto-margin">
-    <%= link_to "Add New Member", new_group_group_member_path(@current_group), class: "btn btn-outline-secondary btn-block" %>
+    <%= link_to "Add New Member", new_group_group_member_path(@current_group), class: "btn btn-primary btn-block" %>
   </div>
 </div>
 

@@ -11,7 +11,8 @@
   </head>
 
   <body class="<%= controller_name %> <%= action_name %>">
-    <div class="container-fluid">
+
+    <div class="container-fluid no-padding content mb-4">
 
       <div class="nav">
         <div class="col-12">
@@ -34,15 +35,19 @@
       </div>
 
       <div class="row">
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-        <%= custom_bootstrap_flash %>
-        <%= yield %>
+        <div class="col-12 no-padding">
+          <p class="notice"><%= notice %></p>
+          <p class="alert"><%= alert %></p>
+          <%= custom_bootstrap_flash %>
+          <%= yield %>
+        </div>
       </div>
-      
-      <div class="float-right m-4">
-        &#169; Travel Pals 2018
-      </div>
+
     </div>
+
+    <footer class="mt-4">
+      <span class="float-right">&#169; Travel Pals 2018</span>
+    </footer>
+
   </body>
 </html>

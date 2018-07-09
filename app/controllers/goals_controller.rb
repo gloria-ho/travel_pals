@@ -1,5 +1,7 @@
 class GoalsController < ApplicationController
   respond_to :html, :json
+  
+  # custom method for chartkick chart
   def new_goals
     # render json: Goal.group_by_day(:created_at).count
     # render json: Goal.where(user_id: :user_id, trip_id: :trip_id)
@@ -7,13 +9,13 @@ class GoalsController < ApplicationController
 
   def new
     @trip = Trip.find(params[:trip_id])
-    @goal = Goal.new
+    @trip_goal = Goal.new
   end
 
   def create
-    @current_trip = Trip.find(params[:trip_id])
-    Goal.create(goal_params.merge(user_id: current_user.id, trip_id: @current_trip.id, deadline: @current_trip.deadline))
-    redirect_to @current_trip
+    trip = Trip.find(params[:trip_id])
+    Goal.create(goal_params.merge(user_id: current_user.id, trip_id: trip.id, deadline: trip.funds_deadline))
+    redirect_to trip
   end
 
   def show
@@ -21,13 +23,13 @@ class GoalsController < ApplicationController
 
   def edit
     @trip = Trip.find(params[:trip_id])
-    @goal = Goal.find(params[:id])
+    @trip_goal = Goal.find(params[:id])
   end
 
   def update
     @trip = Trip.find(params[:trip_id])
-    @goal = Goal.find(params[:id])
-    @goal.update(goal_params)
+    @trip_goal = Goal.find(params[:id])
+    @trip_goal.update(goal_params)
     repspond_with @current_trip
   end
 
@@ -37,7 +39,7 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:goal, :current)
+    params.require(:goal).permit(:total_goal, :current_amount)
   end
 
 end

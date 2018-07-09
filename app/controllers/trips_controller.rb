@@ -10,7 +10,7 @@ class TripsController < ApplicationController
     @trip = Trip.new
     myGroup = GroupMember.where(user_id: current_user.id)
     @groups = myGroup.map do |g|
-      [g.group.nickname,g.group.id]
+      [g.group.nickname, g.group.id]
     end
   end
 
@@ -30,6 +30,7 @@ class TripsController < ApplicationController
         @members.push(User.find(member.user_id))
       end
     end
+
   end
 
   def edit
@@ -54,6 +55,6 @@ class TripsController < ApplicationController
   private
 
   def trip_params
-    params.require(:trip).permit(:nickname, :cost, :deadline, :start_date, :end_date, :group_id)
+    params.require(:trip).permit(:nickname, :total_cost, :deadline, :start_date, :end_date, :group_id)
   end
 end
