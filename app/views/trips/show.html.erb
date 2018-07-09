@@ -105,7 +105,6 @@
 
             <tr>
               <th scope="row"><%= member.first_name %> <%= member.last_name %></th>
-                
      
               <% if goal.present? %>  
                 <% current = goal.current_amount %>
@@ -113,7 +112,6 @@
                 <% balance = total - current %>
                 <% percent = current.to_f/total * 100 %>
                 
-
                 <td>$<%= current %></td>
                 <td>$<%= total %></td>
                 
@@ -145,36 +143,27 @@
                 <td></td>
               <% end %>
 
-              <td>
-                
+              <td> 
                 <% if member.id == current_user.id %>
-
                   <% if goal.present? %>
-                    <!-- <-- Edit Goal -->
-                    <%= link_to "Edit Goal", edit_trip_goal_path(@trip, goal), class: "link" %>
+                    <%= link_to "Edit Goal", edit_goal_path(goal), class: "link" %>
                   <% else %>
                     <%= link_to "Add Goal", new_trip_goal_path(@trip), class: "link" %>
                   <% end %>
-                
                 <% else %>
                   <%= link_to "Message", @trip, class: "message" %>
                 <% end %>
-
-
-
               </td>
             </tr>
-
 
           </div>
 
           <% end %>
-          <!-- @members.each do -->
+
         <% else %>
-          There are no members!
+          There are no members in this group!
         <% end %>
 
-      <!-- </ul> -->
         </tbody>
       </table>
     </div>

@@ -10,6 +10,7 @@ class GoalsController < ApplicationController
   def new
     @trip = Trip.find(params[:trip_id])
     @trip_goal = Goal.new
+    @form_resource = [@trip, @trip_goal]
   end
 
   def create
@@ -18,22 +19,17 @@ class GoalsController < ApplicationController
     redirect_to trip
   end
 
-  def show
-  end
-
   def edit
-    @trip = Trip.find(params[:trip_id])
     @trip_goal = Goal.find(params[:id])
+
+    @form_resource = @trip_goal
   end
 
   def update
-    @trip = Trip.find(params[:trip_id])
     @trip_goal = Goal.find(params[:id])
     @trip_goal.update(goal_params)
-    repspond_with @current_trip
-  end
-
-  def destroy
+    trip = Trip.find(@trip_goal.trip_id)
+    redirect_to trip
   end
 
   private

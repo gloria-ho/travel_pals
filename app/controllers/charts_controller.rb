@@ -3,6 +3,10 @@ class ChartsController < ApplicationController
     render json: User.group_by_day(:created_at).count
   end
 
+  def trip_start
+    render json: Trip.group(:trip_start_date).count
+  end
+
   def new_goals
     # render json: [
     #   { name: "Current".
@@ -11,8 +15,6 @@ class ChartsController < ApplicationController
     # ]
     
     render json: Goal.group(:goal).count
-
-  
 
     # render json: [
     #   {name: "Current", data: Goal.group(:current)},

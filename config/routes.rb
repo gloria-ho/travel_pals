@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :trips do
     resources :groups, only: [:new, :create]
-    resources :goals, only: [:new, :create, :edit]
+    resources :goals, only: [:new, :create]
     resources :itineraries do
       resources :cities, only: [:new, :create]
     end
@@ -23,11 +23,12 @@ Rails.application.routes.draw do
   end
 
   resources :group_members
-  resources :goals
+  resources :goals, only: [:edit, :update]
   
   resources :charts, only: [] do
     collection  do
       get 'new_users', to: 'charts#new_users'
+      get 'trip_start', to: 'charts#trip_start'
       # get 'new_goals', to: 'charts#new_goals'
     end
   end
