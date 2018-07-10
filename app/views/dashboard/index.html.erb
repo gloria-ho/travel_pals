@@ -27,7 +27,7 @@
             <h4>You have no groups yet - create a group or ask a friend for an invite!</h4>
           <% else %>
             <% @myGroups.each do |group| %>
-              <li class="link center"><%= link_to group.group.nickname, group.group %></li>
+              <li class="link center dash-group"><%= link_to group.group.nickname, group.group %></li>
             <% end %>
           <% end %>
         </ul>

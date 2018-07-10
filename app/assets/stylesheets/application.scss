@@ -13,6 +13,7 @@
  *= require_tree .
  *= require toastr/toastr
  *= require bootstrap/dist/css/bootstrap
+ *= require animate
  *= require_self
  */
 
@@ -23,6 +24,12 @@ body{
   font-family: $primaryFont;
   color: $primaryColor;
   font-size: 1rem;
+}
+
+.welcome-txt {
+  font-family: $secondaryFont;
+  color: $thirdaryColor;
+  font-size: 2rem;
 }
 
 .thirdary-color {
@@ -95,6 +102,10 @@ body{
 
 .italic {
   font-style: italic;
+}
+
+.bold-3rd {
+  @include bold-color($thirdaryColor);
 }
 
 .no-padding {
@@ -178,6 +189,17 @@ footer {
 
 .dash-split {
   border-right: solid 1px #c9c9c9
+}
+
+.dash-group {
+  padding: 3px
+}
+
+.dash-group:hover, .dash-group:hover a  {
+  // background-color: $secondaryColor;
+  background-color: $thirdaryColor;
+  border-radius: 5px;
+  color: #fff;
 }
 
 /*

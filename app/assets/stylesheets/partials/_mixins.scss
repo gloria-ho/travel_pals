@@ -1,0 +1,4 @@
+@mixin bold-color($property) {
+  font-weight: bold;
+  color: $property;
+}
