@@ -3,28 +3,28 @@
   <%= fields_for @trip_itinerary_city do |city_form| %>
     <div class="form-group">
       <%= city_form.label :city %> 
-      <%= city_form.text_field :city, class: "form-control" %>
+      <%= city_form.text_field :city, value: @trip_itinerary.city.try(:city).try(:titlecase) , class: "form-control" %>
     </div>
     
     <div class="form-group">
       <%= city_form.label :region %> 
-      <%= city_form.text_field :region, class: "form-control" %>
+      <%= city_form.text_field :region, value: @trip_itinerary.city.try(:region).try(:titlecase), class: "form-control" %>
     </div>
 
     <div class="form-group">
       <%= city_form.label :country %> 
-      <%= city_form.text_field :country, class: "form-control" %>
+      <%= city_form.text_field :country, value: @trip_itinerary.city.try(:country).try(:titlecase), class: "form-control" %>
     </div>
   <% end %>
  
   <div class="form-group">
     <%= f.label :start_date %> 
-    <%= f.date_field :start_date, class: "form-control" %>
+    <%= f.date_field :start_date, value: @trip.trip_start_date, class: "form-control" %>
   </div>
 
   <div class="form-group">
     <%= f.label :end_date %> 
-    <%= f.date_field :end_date, class: "form-control" %>
+    <%= f.date_field :end_date, value: @trip.trip_end_date, class: "form-control" %>
   </div>
 
   <br />

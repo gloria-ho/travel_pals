@@ -51,17 +51,27 @@ class TripsController < ApplicationController
   def update
     trip = Trip.find(params[:id])
     trip.update(trip_params)
-    redirect_to dashboard_path
+    redirect_to trip
   end
 
   def destroy
     Trip.destroy(params[:id])
-    render json: {status: "success", message: "Trip was successfully deleted"}
+    render json: {
+      status: "success",
+     message: "Trip was successfully deleted"
+   }
   end
 
   private
 
   def trip_params
-    params.require(:trip).permit(:nickname, :total_cost, :deadline, :start_date, :end_date, :group_id)
+    params.require(:trip).permit(
+      :nickname, 
+      :total_cost, 
+      :funds_deadline, 
+      :trip_start_date, 
+      :trip_end_date, 
+      :group_id
+    )
   end
 end

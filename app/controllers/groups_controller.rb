@@ -20,8 +20,14 @@ class GroupsController < ApplicationController
   end
 
   def create
-    group = Group.create(group_params.merge(creator_id: current_user.id, admin_id: current_user.id))
-    GroupMember.create(group_id: group.id, user_id: current_user.id)
+    group = Group.create(group_params.merge(
+      creator_id: current_user.id, 
+      admin_id: current_user.id)
+    )
+    GroupMember.create(
+      group_id: group.id,
+     user_id: current_user.id
+     )
     flash[:success] = "Group has been successfully created"
     redirect_to dashboard_path
   end
@@ -44,7 +50,11 @@ class GroupsController < ApplicationController
   private
 
   def group_params
-    params.require(:group).permit(:nickname, :creator_id, :admin_id)
+    params.require(:group).permit(
+      :nickname, 
+      :creator_id, 
+      :admin_id
+      )
   end
 
 end

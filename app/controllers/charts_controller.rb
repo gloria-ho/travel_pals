@@ -7,6 +7,10 @@ class ChartsController < ApplicationController
     render json: Trip.group(:trip_start_date).count
   end
 
+  def cities
+    render json: City.group(:country).count
+  end
+
   def new_goals
     # render json: [
     #   { name: "Current".

@@ -13,7 +13,11 @@ class CitiesController < ApplicationController
 
   private
   def city_params
-    params.require(:itinerary).permit(:city, :region, :country)
+    params.require(:itinerary).permit(
+      :city, 
+      :region, 
+      :country
+      )
   end
 
 end

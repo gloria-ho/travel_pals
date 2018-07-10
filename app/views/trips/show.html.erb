@@ -63,17 +63,17 @@
 <br />
 
 <div class="row max-width mt-2 trip-itinerary">
-  <div class="col-4 align-right">
+  <div class="col-3 align-right">
     <span class="bold">Itinerary:</span><br />
     <small><%= link_to "Add City", new_trip_itinerary_path(@trip) %></small>
   </div>
-  <div class="col-8">
+  <div class="col-9">
     <% if @itinerary.nil? %>
       No itinerary exists, please start by adding a city.
     <% else %>
       <% @itinerary.each do |i| %>
-        <div class="row">
-          <div class="col-6 center">
+        <div class="row itinerary-div">
+          <div class="col-7 center">
             <%= i.city.city.titlecase %>, 
             <% if i.city.region == "dc" %>
               <%= i.city.region.upcase %>
@@ -85,11 +85,16 @@
             <% else %>
               <%= i.city.country.titlecase %>
             <% end %>
+            <br />
+            <%= link_to image_tag("edit.png", alt: "edit")+" Edit", edit_trip_itinerary_path(@trip, i) ,class: "mb-1 ml-1"%>
           </div>
-          <div class="col-6">
+          <div class="col-5 align-left">
             <%= i.start_date.strftime("%m/%d/%Y") %>
             - 
-            <%= i.end_date.strftime("%m/%d/%Y") %><br />
+            <%= i.end_date.strftime("%m/%d/%Y") %>
+            <br />
+            <%= link_to image_tag("delete.png")+" Delete", trip_itinerary_path(@trip, i), class: "danger m-1 delete-itinerary"%><br />
+             
           </div>
         </div>
       <% end %>
@@ -161,7 +166,7 @@
                   <% end %>          
                 </td>
               <% else %>
-                <td colspan="4"><span class="warning">No Goal Set!</span></td>
+                <td colspan="4"><span class="warning blink">No Goal Set!</span></td>
               <% end %>
 
               <td> 
@@ -169,7 +174,7 @@
                   <% if goal.present? %>
                     <%= link_to "Edit Goal", edit_goal_path(goal), class: "btn btn-sm btn-info" %>
                   <% else %>
-                    <%= link_to "Add Goal", new_trip_goal_path(@trip), class: "btn btn-sm btn-outline-primary" %>
+                    <%= link_to "Add Goal", new_trip_goal_path(@trip), class: "btn btn-sm btn-info" %>
                   <% end %>
                 <% else %>
                   <%= link_to "Message", @trip, class: "btn btn-outline-info btn-sm message" %>

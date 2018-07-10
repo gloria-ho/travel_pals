@@ -15,7 +15,11 @@ class GoalsController < ApplicationController
 
   def create
     trip = Trip.find(params[:trip_id])
-    Goal.create(goal_params.merge(user_id: current_user.id, trip_id: trip.id, deadline: trip.funds_deadline))
+    Goal.create(goal_params.merge(
+      user_id: current_user.id,
+       trip_id: trip.id, 
+       deadline: trip.funds_deadline
+       ))
     redirect_to trip
   end
 
@@ -35,7 +39,10 @@ class GoalsController < ApplicationController
   private
 
   def goal_params
-    params.require(:goal).permit(:total_goal, :current_amount)
+    params.require(:goal).permit(
+      :total_goal, 
+      :current_amount
+      )
   end
 
 end

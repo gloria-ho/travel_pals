@@ -29,6 +29,7 @@ Rails.application.routes.draw do
     collection  do
       get 'new_users', to: 'charts#new_users'
       get 'trip_start', to: 'charts#trip_start'
+      get 'cities', to: 'charts#cities'
       # get 'new_goals', to: 'charts#new_goals'
     end
   end

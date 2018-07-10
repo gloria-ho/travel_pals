@@ -18,13 +18,17 @@ class ItinerariesController < ApplicationController
 
   def create
     city = City.find_or_create_by(city_params)
-    itinerary = Itinerary.create(itinerary_params.merge(trip_id: params[:trip_id], city_id: city.id))
+    itinerary = Itinerary.create(itinerary_params.merge(
+      trip_id: params[:trip_id], 
+      city_id: city.id)
+    )
     flash[:success] = "Itinerary has been successfully created"
     redirect_to trip_path(params[:trip_id])
   end
 
   def edit
-    @itinerary = Itinerary.find(params[:id])
+    @trip = Trip.find(params[:trip_id])
+    @trip_itinerary = Itinerary.find(params[:id])
   end
 
   def update
@@ -35,17 +39,24 @@ class ItinerariesController < ApplicationController
 
   def destroy
     Itinerary.destroy(params[:id])
-    # render json: {status: "success", message: "Itinerary was successfully deleted"}
+    render json: {status: "success", message: "Itinerary was successfully deleted"}
   end
 
   private
 
   def itinerary_params
-    params.require(:itinerary).permit(:start_date, :end_date)
+    params.require(:itinerary).permit(
+      :start_date, 
+      :end_date
+      )
   end
 
   def city_params
-    params.require(:city).permit(:city, :region, :country)
+    params.require(:city).permit(
+      :city, 
+      :region, 
+      :country
+      )
   end
 
 end
