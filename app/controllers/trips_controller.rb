@@ -22,6 +22,14 @@ class TripsController < ApplicationController
 
   def show
     @trip = Trip.find(params[:id])
+    find_trip = Itinerary.where(trip_id: @trip.id)
+    @itinerary = []
+    if find_trip
+      find_trip.each do |t|
+        @city = City.find(t.city_id)
+        @itinerary.push(t)
+      end
+    end
     @members = []
     if @trip.group_id
       current_group = Group.find(@trip.group.id)
@@ -30,7 +38,6 @@ class TripsController < ApplicationController
         @members.push(User.find(member.user_id))
       end
     end
-
   end
 
   def edit

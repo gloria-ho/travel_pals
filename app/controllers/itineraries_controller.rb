@@ -13,9 +13,7 @@ class ItinerariesController < ApplicationController
   def new
     @trip = Trip.find(params[:trip_id])
     @trip_itinerary = Itinerary.new
-
     @trip_itinerary_city = City.new
-
   end
 
   def create

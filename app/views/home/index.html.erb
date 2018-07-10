@@ -6,7 +6,7 @@
 
 <div class="row center">
   <div class="col-12">
-    <%= image_tag image_path("friends-cheer.jpg"), alt: "friends image", class: "hero-img opacity-8" %>
+    <%= image_tag image_path("friends-cheer.jpg"), alt: "friends image", class: "hero-img opacity-primary" %>
   </div>
 </div>
 
@@ -21,7 +21,7 @@
   <div class="col-12">
     <h4>Look at when our users are travelling!</h4><br />
     
-    <%= line_chart trip_start_charts_path %>
+    <%= pie_chart trip_start_charts_path %>
   
   </div>
 </div>

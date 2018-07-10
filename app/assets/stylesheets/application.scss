@@ -25,6 +25,14 @@ body{
   font-size: 1rem;
 }
 
+.thirdary-color {
+  color: $thirdaryColor;
+}
+
+.warning {
+  color: $warningColor;
+}
+
 .content {
   height: 100%;
 }
@@ -70,12 +78,12 @@ body{
   position: absolute;
 }
 
-.opacity-8 {
+.opacity-primary {
   opacity: .8;
 }
 
-.opacity-2 {
-  opacity: .2;
+.opacity-secondary {
+  opacity: .15;
 }
 
 .bold {
@@ -95,22 +103,22 @@ body{
 }
 .red, .orange, .yellow, .green {
   border-radius: 5px;
-  padding: 8px;
+  padding: 7px;
 }
 .red {
-  background-color: #ba0000;
+  background-color: $dangerColor;
 }
 .orange {
   background-color: #e07b00;
 }
 .yellow {
-  background-color: #e8c900;
+  background-color: $warningColor;
 }
 .green {
-  background-color: #01c43c;
+  background-color: $successColor;
 }
 .blink {
-  animation: blinker 1s linear infinite;
+  animation: blinker 2s linear infinite;
 }
 
 /*
@@ -138,6 +146,10 @@ body{
   margin: 10px;
 }
 
+a {
+  color: $thirdaryColor;
+}
+
 /*
  * footer
  */
@@ -161,7 +173,6 @@ footer {
 /*
  * dashboard
  */
-
 .dash-col {
   padding: 5%;
  }
@@ -180,6 +191,12 @@ footer {
 /*
  * trips
  */
+ .trip-itinerary {
+  border-top: 1px solid $secondaryColor;
+  border-bottom: 1px solid $secondaryColor;
+  padding: 10px;
+}
+
 
  /*
   * animation

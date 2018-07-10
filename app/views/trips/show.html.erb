@@ -1,6 +1,6 @@
 <div class="row max-width bg-img">
   <div class="col-12 center no-padding">
-    <%= image_tag image_path("map-pair.jpg"), alt: "map image", class: "hero-img opacity-2" %>
+    <%= image_tag image_path("map-pair.jpg"), alt: "map image", class: "hero-img opacity-secondary" %>
   </div>
 </div>
 
@@ -60,15 +60,40 @@
   </div>
 </div>
 
-<div class="row max-width mt-2">
-  <div class="col-6 align-right">
-    <span class="bold">Itinerary:</span>
-  </div>
-  <div class="col-6 align-left">
-    City1, Date - Date<br />
-    City2, Date - Date<br />
-    City3, Date - Date<br />
+<br />
+
+<div class="row max-width mt-2 trip-itinerary">
+  <div class="col-4 align-right">
+    <span class="bold">Itinerary:</span><br />
     <small><%= link_to "Add City", new_trip_itinerary_path(@trip) %></small>
+  </div>
+  <div class="col-8">
+    <% if @itinerary.nil? %>
+      No itinerary exists, please start by adding a city.
+    <% else %>
+      <% @itinerary.each do |i| %>
+        <div class="row">
+          <div class="col-6 center">
+            <%= i.city.city.titlecase %>, 
+            <% if i.city.region == "dc" %>
+              <%= i.city.region.upcase %>
+            <% else %>
+              <%= i.city.region.titlecase %>, 
+            <% end %>
+            <% if i.city.country == "usa" %>
+              <%= i.city.country.upcase %>
+            <% else %>
+              <%= i.city.country.titlecase %>
+            <% end %>
+          </div>
+          <div class="col-6">
+            <%= i.start_date.strftime("%m/%d/%Y") %>
+            - 
+            <%= i.end_date.strftime("%m/%d/%Y") %><br />
+          </div>
+        </div>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
@@ -87,7 +112,6 @@
           <tr>
             <th scope="col">Member</th>
             <th scope="col">Current Funds</th>
-            
             <th scope="col">Goal</th>
             <th scope="col">Progress</th>
             <th scope="col">Remainder</th>
@@ -117,7 +141,7 @@
                 
                 <td>
                   <% if percent < 30 %>
-                    <span class="red">
+                    <span class="red blink">
                   <% elsif percent >= 30 && percent < 60 %>
                     <span class="orange">
                   <% elsif percent >= 60 && percent < 90 %>
@@ -137,21 +161,18 @@
                   <% end %>          
                 </td>
               <% else %>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td class="orange">No Goal Set!</td>
+                <td colspan="4"><span class="warning">No Goal Set!</span></td>
               <% end %>
 
               <td> 
                 <% if member.id == current_user.id %>
                   <% if goal.present? %>
-                    <%= link_to "Edit Goal", edit_goal_path(goal), class: "link" %>
+                    <%= link_to "Edit Goal", edit_goal_path(goal), class: "btn btn-sm btn-info" %>
                   <% else %>
-                    <%= link_to "Add Goal", new_trip_goal_path(@trip), class: "link" %>
+                    <%= link_to "Add Goal", new_trip_goal_path(@trip), class: "btn btn-sm btn-outline-primary" %>
                   <% end %>
                 <% else %>
-                  <%= link_to "Message", @trip, class: "message" %>
+                  <%= link_to "Message", @trip, class: "btn btn-outline-info btn-sm message" %>
                 <% end %>
               </td>
             </tr>
