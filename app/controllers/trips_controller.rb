@@ -50,6 +50,11 @@ class TripsController < ApplicationController
 
   def update
     trip = Trip.find(params[:id])
+    if trip.group_id != params[:group_id]
+      trip.goals.ids.each do |t|
+        Goal.destroy(t)
+      end
+    end
     trip.update(trip_params)
     redirect_to trip
   end

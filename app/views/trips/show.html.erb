@@ -61,19 +61,23 @@
 </div>
 
 <br />
-
-<div class="row max-width mt-2 trip-itinerary">
-  <div class="col-3 align-right">
-    <span class="bold">Itinerary:</span><br />
-    <small><%= link_to "Add City", new_trip_itinerary_path(@trip) %></small>
+<div class="row max-width mt-3">
+  <h4 class="max-width center">Itinerary:</h4>
+</div>
+<div class="row max-width trip-itinerary">
+  <div class="row max-width">
+    <div class="col-12 center">
+      <%= link_to image_tag("add-city.png", alt: "city")+" Add a City", new_trip_itinerary_path(@trip), class: "m-2 link" %>    
+    </div>
   </div>
-  <div class="col-9">
+
+  <div class="col-12">
     <% if @itinerary.nil? %>
       No itinerary exists, please start by adding a city.
     <% else %>
       <% @itinerary.each do |i| %>
         <div class="row itinerary-div">
-          <div class="col-7 center">
+          <div class="col-6 center">
             <%= i.city.city.titlecase %>, 
             <% if i.city.region == "dc" %>
               <%= i.city.region.upcase %>
@@ -85,16 +89,15 @@
             <% else %>
               <%= i.city.country.titlecase %>
             <% end %>
-            <br />
-            <%= link_to image_tag("edit.png", alt: "edit")+" Edit", edit_trip_itinerary_path(@trip, i) ,class: "mb-1 ml-1"%>
+            
+            <%= link_to image_tag("edit.png", alt: "edit")+" Edit", edit_trip_itinerary_path(@trip, i) ,class: "m-1 link"%>
           </div>
-          <div class="col-5 align-left">
+          <div class="col-6 align-left">
             <%= i.start_date.strftime("%m/%d/%Y") %>
             - 
             <%= i.end_date.strftime("%m/%d/%Y") %>
-            <br />
-            <%= link_to image_tag("delete.png")+" Delete", trip_itinerary_path(@trip, i), class: "danger m-1 delete-itinerary"%><br />
-             
+            
+            <%= link_to image_tag("delete.png")+" Delete", trip_itinerary_path(@trip, i), class: "m-1 link danger delete-itinerary ml-5"%><br /><br />       
           </div>
         </div>
       <% end %>
