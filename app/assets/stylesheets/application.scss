@@ -127,8 +127,7 @@ body{
 /*
  * nav
  */
-.nav {
-  display: inline-block;
+.navbar {
   margin-top: 15px 0;
 }
 
@@ -136,16 +135,12 @@ body{
   max-width: 250px;
 }
 
-.nav li {
-  display: inline-block;
-}
-
-.nav li a:hover, a:hover, .dash-link:hover {
+.navbar li a:hover, a:hover, .dash-link:hover {
   text-decoration: none;
   color: $thirdaryColor;
 }
 
-.nav li , .link {
+.navbar li , .link {
   list-style-type: none;
   margin: 10px;
 }

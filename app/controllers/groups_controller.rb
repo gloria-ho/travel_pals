@@ -29,7 +29,7 @@ class GroupsController < ApplicationController
      user_id: current_user.id
      )
     flash[:success] = "Group has been successfully created"
-    redirect_to dashboard_path
+    redirect_to @group
   end
 
   def edit
@@ -39,7 +39,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     @group.update(group_params)
-    redirect_to dashboard_path
+    redirect_to @group
   end
 
   def destroy
