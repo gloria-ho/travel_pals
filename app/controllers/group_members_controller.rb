@@ -10,21 +10,7 @@ class GroupMembersController < ApplicationController
 
   def create
     @group = Group.find(params[:group_id])
-    existing_member = GroupMember.find_by(group_id: :group_id, user_id: :user_id)
-    
-    #
-    # TODO
-    #
-    # Message not working, duplicate won't create
-    # FIX: user_id not working here, if statement is not running yet
-    p params[:user_id]
-    if existing_member.present?
-      flash[:error] = "This person is already a member"
-      return redirect_back fallback_location: @group
-    end
-    #
-
-    GroupMember.create(group_member_params.merge(group_id: @group.id))
+    GroupMember.find_or_create_by(group_member_params.merge(group_id: @group.id))
     flash[:success] = "Group member has been successfully added"
     redirect_to @group
   end

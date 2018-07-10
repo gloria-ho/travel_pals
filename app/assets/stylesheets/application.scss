@@ -140,8 +140,9 @@ body{
   display: inline-block;
 }
 
-.nav li a:hover, .link a:hover, .dash-link:hover {
+.nav li a:hover, a:hover, .dash-link:hover {
   text-decoration: none;
+  color: $thirdaryColor;
 }
 
 .nav li , .link {

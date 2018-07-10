@@ -8,7 +8,12 @@ class ChartsController < ApplicationController
   end
 
   def cities
-    render json: City.group(:country).count
+    cities = City.group(:country).count
+    results = {}
+    cities.keys.each do |key|
+      results[key.titleize] = cities[key]
+    end
+    render json: results
   end
 
   def new_goals

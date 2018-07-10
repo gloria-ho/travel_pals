@@ -19,14 +19,14 @@
 
 <div class="row mt-4 mb-4">
   <div class="col-12 center">
-    <h4>Look at when our users are travelling!</h4><br />
+    <h4>Look at our users' upcoming travel dates!</h4><br />
     <%= line_chart trip_start_charts_path, messages: {empty: "No data"} %>
   </div>
 </div>
 
 <div class="row mt-4 mb-4">
   <div class="col-12 center">
-    <h4>Look at countries our users are planning to visit!</h4><br />
+    <h4>See which countries our users are visiting!</h4><br />
     <%= pie_chart cities_charts_path, legend: "bottom", messages: {empty: "No data"} %>
   </div>
 </div>
