@@ -1,6 +1,13 @@
 <div class="row">
   <div class="col-12">
-    <h2 class="center welcome-txt animated infinite bounce"><% if current_user %>Welcome back <%= current_user.first_name %>!<% else %>Welcome to the Travel Pals app!<% end %></h2>
+    <h2 class="center welcome-txt animated infinite bounce">
+      <% if current_user %>
+        Welcome back, <%= current_user.first_name %>!
+      <% #unless current_user %>
+      <% else %>
+        Welcome to the Travel Pals app!
+      <% end %>  
+    </h2>
   </div>
 </div>
 
@@ -12,7 +19,7 @@
 
 <div class="row mt-2">
   <div class="col-12">
-    <h2>About Us</h2>
+    <h2 id="about" mt-2>About Us</h2>
     <p>Plan and manage your next trip itinerary and fund goals with our easy to use app! Invite friends to your trips and keep track of each others' goals!</p>
     <ul>
       <li>Easy to use</li>
