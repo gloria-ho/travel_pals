@@ -29,7 +29,7 @@ class GroupsController < ApplicationController
      user_id: current_user.id
      )
     flash[:success] = "Group has been successfully created"
-    redirect_to @group
+    redirect_to group
   end
 
   def edit
